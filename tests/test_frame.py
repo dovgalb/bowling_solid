@@ -1,18 +1,9 @@
 import pytest
 
-
-class Frame:
-    def __init__(self):
-        self._score = 0
-    @property
-    def score(self):
-        return self._score
-
-    def add(self, pins):
-        self._score += pins
+from model.frame import Frame
 
 
-class FrameTest:
+class TestFrame:
     def test_score_no_throws(self):
         f = Frame()
         assert f.score == 0
