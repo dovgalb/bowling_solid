@@ -13,10 +13,23 @@ class Frame:
         self._current_throw += 1
         self._score += pins
 
-    def score_for_frame(self, frame: int):
-        score: int = 0
-        ball: int = 0
-        for current_frame in range(frame):
-            score += self._throws[ball] + self._throws[ball+1]
-            ball += 2
+    def score_for_frame(self, the_frame: int):
+        ball = 0
+        score = 0
+        current_frame = 0
+
+        while current_frame < the_frame:
+            first_throw = self._throws[ball]
+            ball += 1
+            second_throw = self._throws[ball]
+            ball += 1
+            frame_score = first_throw + second_throw
+
+            if frame_score == 10:
+                score += frame_score + self._throws[ball]
+                ball += 1
+            else:
+                score += frame_score
+
+            current_frame += 1
         return score
